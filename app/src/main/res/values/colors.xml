@@ -10,4 +10,6 @@
     <color name="blue_normal">#536DFE</color>
     <color name="green_complete">#ff99cc00</color>
     <color name="purple_progress">#ffaa66cc</color>
+    <color name="mainColor">#0c5871</color>
+
 </resources>

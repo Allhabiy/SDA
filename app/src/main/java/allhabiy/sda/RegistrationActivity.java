@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -24,6 +25,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RegistrationActivity extends AppCompatActivity {
+
 
     private static final String REGISTER_URL = "http://m7sn.com/sda/app/DonatorRegister.php";
     private static final String REGISTER_URL2 = "http://m7sn.com/sda/app/NeedyRegister.php";
@@ -402,6 +404,14 @@ public class RegistrationActivity extends AppCompatActivity {
                 break;
 
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     /*
