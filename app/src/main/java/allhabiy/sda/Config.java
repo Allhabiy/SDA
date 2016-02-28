@@ -28,5 +28,8 @@ public interface Config {
     //TEST@ if whether the person who login in is the doner
     public static final String LOGIN_DONER = "doner";
 
+    //TEST@ if whether the person who login in is the doner
+    public static final String LOGIN_EMP = "employee";
+
 
 }

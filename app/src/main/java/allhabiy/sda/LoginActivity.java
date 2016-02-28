@@ -156,6 +156,32 @@ public class LoginActivity extends AppCompatActivity {
                             startActivity(intent);
 
                         }
+
+
+                        //If we are getting employee from server
+                        //in the server there is echo "employee"; that mean the user in a employee
+                        else if (response.equalsIgnoreCase(Config.LOGIN_EMP)) {
+
+                            hideDialog();
+                            //Creating a shared preference
+                            SharedPreferences sharedPreferences = LoginActivity.this.getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
+
+                            //Creating editor to store values to shared preferences
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                            //Adding values to editor
+                            editor.putBoolean(Config.LOGGEDIN_SHARED_PREF, true);
+                            editor.putString(Config.EMAIL_SHARED_PREF, nationlid);
+
+                            //Saving values to editor
+                            editor.commit();
+
+                            //Starting profile activity
+
+                            Intent intent = new Intent(LoginActivity.this, EmployeeActivity.class);
+                            startActivity(intent);
+
+                        }
                         //else there is nothing in the database
                         else {
                             //If the server response is not success

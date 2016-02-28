@@ -25,6 +25,7 @@
         <activity android:name=".ProfileActivity"></activity>
         <activity android:name=".AboutSDAActivity"></activity>
         <activity android:name=".AboutDevelopersActivity"></activity>
+        <activity android:name=".EmployeeActivity"></activity>
 
     </application>
 
