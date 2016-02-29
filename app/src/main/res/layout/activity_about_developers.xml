@@ -83,7 +83,7 @@
                 android:layout_centerVertical="true"
                 android:paddingLeft="@dimen/_5sdp"
                 android:paddingRight="@dimen/_5sdp"
-                android:src="@drawable/ic_preview" />
+                android:src="@drawable/img_mohsen" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -108,7 +108,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/dev2_Name"
                     android:layout_marginBottom="@dimen/_5sdp"
-                    android:text="05000000000"
+                    android:text="0500184025"
                     android:textSize="@dimen/_15sdp" />
 
                 <TextView
@@ -116,8 +116,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/dev2_Phone"
-                    android:text="M7sn@gmail.com"
-                    android:textSize="@dimen/_15sdp" />
+                    android:text="mohsen.mulhem@gmail.com"
+                    android:textSize="@dimen/_12sdp" />
             </RelativeLayout>
         </RelativeLayout>
         <!-- Second developer End -->

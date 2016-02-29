@@ -96,6 +96,24 @@ public class RegistrationActivity extends AppCompatActivity {
         buttonRegister = (Button) findViewById(R.id.buttonRegister);
         buttonLog = (Button) findViewById(R.id.buttonLog);
 
+        editTextNationalID.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (editTextNationalID.getText().length() != 10) {
+                    editTextNationalID.setError("Please Enter correct National ID");
+                }
+            }
+        });
+
+        editTextPhone.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!editTextPhone.getText().toString().startsWith("966") || editTextPhone.getText().length() != 12) {
+                    editTextPhone.setError("Please start with 966");
+                }
+            }
+        });
+
 
         // Progress dialog
         pDialog = new ProgressDialog(this);
@@ -148,7 +166,18 @@ public class RegistrationActivity extends AppCompatActivity {
         buttonRegister.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-
+                if (!editTextPhone.getText().toString().startsWith("966") || editTextPhone.getText().length() != 12) {
+                    Toast.makeText(getApplicationContext(),
+                            "Please enter All values! in correct format", Toast.LENGTH_SHORT)
+                            .show();
+                    editTextPhone.setText("");
+                }
+                if (editTextNationalID.getText().length() != 10) {
+                    Toast.makeText(getApplicationContext(),
+                            "Please enter All values! in correct format", Toast.LENGTH_SHORT)
+                            .show();
+                    editTextNationalID.setText("");
+                }
 
                 if (!editTextUsername.getText().toString().equals("") && !editTextPassword.getText().toString().equals("")
                         && !editTextNationalID.getText().toString().equals("") && !editTextPhone.getText().toString().equals("")) {
@@ -157,7 +186,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 } else {
                     // Prompt user to enter credentials
                     Toast.makeText(getApplicationContext(),
-                            "Please enter All values!", Toast.LENGTH_LONG)
+                            "Please enter All values!", Toast.LENGTH_SHORT)
                             .show();
                 }
 

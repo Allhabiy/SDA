@@ -35,7 +35,7 @@
         android:layout_marginTop="24dp"
         android:background="@color/colorPrimary"
         android:padding="12dp"
-        android:text="About SDA"
+        android:text="Awareness About Donation"
         android:textColor="@color/colorAccent" />
 
     <android.support.v7.widget.AppCompatButton

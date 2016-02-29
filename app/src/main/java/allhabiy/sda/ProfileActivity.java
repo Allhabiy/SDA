@@ -58,7 +58,7 @@ public class ProfileActivity extends AppCompatActivity {
                         editor.commit();
 
                         //Starting login activity
-                        Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+                        Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
                         startActivity(intent);
                     }
                 });
