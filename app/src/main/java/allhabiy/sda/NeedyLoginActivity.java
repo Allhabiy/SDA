@@ -7,7 +7,6 @@ import android.view.KeyEvent;
 public class NeedyLoginActivity extends AppCompatActivity {
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
