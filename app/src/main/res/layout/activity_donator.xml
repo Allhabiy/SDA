@@ -18,26 +18,17 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="THIS IS DONOR PAGE" />
+            android:text="THIS IS user 2 PAGE" />
 
         <Button
+            android:id="@+id/user2Location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:layout_marginTop="24dp"
             android:background="@color/blue_normal"
-            android:text="Make  Donation" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:layout_marginTop="24dp"
-            android:background="@color/colorPrimary"
             android:text="Update my location" />
 
-
     </LinearLayout>
-
 
 </LinearLayout>

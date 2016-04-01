@@ -64,5 +64,16 @@
             android:textSize="16dip" />
 
 
+        <TextView
+            android:id="@+id/PasswordRecovery"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_24sdp"
+            android:gravity="center"
+            android:onClick="passwordRecovery"
+            android:text="Reset your password!"
+            android:textSize="16dip" />
+
+
     </LinearLayout>
 </LinearLayout>
