@@ -12,9 +12,6 @@ import java.util.List;
 import allhabiy.sda.R;
 import allhabiy.sda.models.Box;
 
-/**
- * Created by Shareef on 3/15/2016.
- */
 public class BoxAdapter extends RecyclerView.Adapter<BoxAdapter.ViewHolder> {
 
     private Context mContext;

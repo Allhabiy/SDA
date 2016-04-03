@@ -2,9 +2,7 @@ package allhabiy.sda.models;
 
 import java.io.Serializable;
 
-/**
- * Created by Shareef on 3/15/2016.
- */
+
 public class User implements Serializable {
 
     private String name;

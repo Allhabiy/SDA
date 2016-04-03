@@ -27,9 +27,7 @@ import allhabiy.sda.listeners.RecyclerItemClickListener;
 import allhabiy.sda.models.Box;
 import allhabiy.sda.utils.Config;
 
-/**
- * Created by Shareef on 4/1/2016.
- */
+
 public class BoxActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;

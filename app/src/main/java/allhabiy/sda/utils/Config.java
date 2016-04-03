@@ -9,6 +9,8 @@ public interface Config {
     public static final String UPDATE_USER2_LOCATION_URL = "http://m7sn.com/sda/app/update_Donator_location.php";
     public static final String GET_ALL_USER_LOCATIONS_URL = "http://m7sn.com/sda/app/get_all_needy_locations.php";
     public static final String GET_ALL_BOX_URL = "http://m7sn.com/sda/app/get_all_box.php";
+    public static final String UPDATE_BOX_LOCATION_URL = "http://m7sn.com/sda/app/update_box_location.php";
+
 
     //Keys for email and password as defined in our $_POST['key'] in login.php
     public static final String KEY_NATIONAL_ID = "nationlid";

@@ -10,9 +10,7 @@ import android.widget.TextView;
 import allhabiy.sda.R;
 import allhabiy.sda.models.User;
 
-/**
- * Created by Shareef on 3/16/2016.
- */
+
 public class NeedyDetailsActivity extends AppCompatActivity {
 
     private TextView textView_userName;

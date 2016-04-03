@@ -12,9 +12,7 @@ import java.util.List;
 import allhabiy.sda.R;
 import allhabiy.sda.models.User;
 
-/**
- * Created by Shareef on 3/15/2016.
- */
+
 public class NeedyAdapter extends RecyclerView.Adapter<NeedyAdapter.ViewHolder> {
 
     private Context mContext;
