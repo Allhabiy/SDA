@@ -23,6 +23,8 @@ import allhabiy.sda.R;
 public class ResetPasswordActivity extends AppCompatActivity {
 
     private EditText editTextSendNationalID;
+    private EditText editTextSendPhone;
+
     private EditText editTextOldPassword;
     private EditText editTextNewPassword;
 
@@ -34,6 +36,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
     private static final String ForgetPassword_URL = "http://m7sn.com/sda/app/sms/GetPassword2.php";
 
     public static final String KEY_ForgetPass = "forgetpassword";
+    public static final String KEY_ForgetPhone = "forgetphone";
 
 
     @Override
@@ -43,6 +46,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
 
 
         editTextSendNationalID = (EditText) findViewById(R.id.forgetNationalID);
+        editTextSendPhone = (EditText) findViewById(R.id.forgetPhone);
         editTextOldPassword = (EditText) findViewById(R.id.editTextPassword_Old);
         editTextNewPassword = (EditText) findViewById(R.id.editTextPassword_New);
 
@@ -75,6 +79,8 @@ public class ResetPasswordActivity extends AppCompatActivity {
 
     private void GetPassword() {
         final String NationalID = editTextSendNationalID.getText().toString().trim();
+        final String Phone = editTextSendPhone.getText().toString().trim();
+
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, ForgetPassword_URL,
                 new Response.Listener<String>() {
@@ -93,6 +99,8 @@ public class ResetPasswordActivity extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put(KEY_ForgetPass, NationalID);
+                params.put(KEY_ForgetPhone, Phone);
+
                 return params;
             }
         };
