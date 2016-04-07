@@ -8,9 +8,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,7 +31,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
     private View formChangePassword;
 
 
-    private static final String ForgetPassword_URL = "http://m7sn.com/sda/app/sms/GetPassword.php";
+    private static final String ForgetPassword_URL = "http://m7sn.com/sda/app/sms/GetPassword2.php";
 
     public static final String KEY_ForgetPass = "forgetpassword";
 
@@ -54,7 +56,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
         btnSendPassword.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                formChangePassword.setVisibility(View.VISIBLE);
+                //     formChangePassword.setVisibility(View.VISIBLE);
                 GetPassword();
 
             }
@@ -94,7 +96,8 @@ public class ResetPasswordActivity extends AppCompatActivity {
                 return params;
             }
         };
-
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
 
     }
 
