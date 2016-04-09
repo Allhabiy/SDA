@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/colorBackground"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/_24sdp"
+        android:paddingRight="@dimen/_24sdp"
+        android:paddingTop="@dimen/_56sdp">
+
+        <TextView
+            android:id="@+id/lblDate"
+            style="@style/DTP.Label" />
+
+        <TextView
+            android:id="@+id/lblTime"
+            style="@style/DTP.Label" />
+
+        <Button
+            android:id="@+id/btnDatePicker"
+            style="@style/DTP.Button"
+            android:background="@color/colorPrimary"
+            android:text="@string/datepicker"
+            android:textColor="@color/colorAccent" />
+
+        <Button
+            android:id="@+id/btnTimePicker"
+            style="@style/DTP.Button"
+            android:background="@color/colorPrimary"
+            android:text="@string/timepicker"
+            android:textColor="@color/colorAccent" />
+
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/radio_Clothes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
+                android:text="Clothes" />
+            />
+
+            <RadioButton
+                android:id="@+id/radio_Food"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
+                android:text="Food" />
+            />
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/txt_select"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/BtnSendDonation"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_24sdp"
+            android:layout_marginTop="@dimen/_24sdp"
+            android:background="@color/colorPrimary"
+            android:padding="@dimen/_12sdp"
+            android:text="Send the Donation"
+            android:textColor="@color/colorAccent" />
+
+
+    </LinearLayout>
+</LinearLayout>

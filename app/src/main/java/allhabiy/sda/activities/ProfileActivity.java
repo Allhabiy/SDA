@@ -36,8 +36,28 @@ public class ProfileActivity extends AppCompatActivity {
         textView.setText("Current User: " + nationlid);
     }
 
+    public void logout2() {
+        //Getting out sharedpreferences
+        SharedPreferences preferences = getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        //Getting editor
+        SharedPreferences.Editor editor = preferences.edit();
+
+        //Puting the value false for loggedin
+        editor.putBoolean(Config.LOGGEDIN_SHARED_PREF, false);
+
+        //Putting blank value to email
+        editor.putString(Config.EMAIL_SHARED_PREF, "");
+
+        //Saving the sharedpreferences
+        editor.commit();
+
+        //Starting login activity
+        Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
+
     //Logout function
-    private void logout() {
+    public void logout() {
         //Creating an alert dialog to confirm logout
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setMessage("Are you sure you want to logout?");

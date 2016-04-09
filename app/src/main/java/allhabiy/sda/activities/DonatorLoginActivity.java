@@ -1,6 +1,7 @@
 package allhabiy.sda.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -28,6 +29,8 @@ import allhabiy.sda.utils.UserLocation;
 public class DonatorLoginActivity extends AppCompatActivity {
 
     private Button updateLocation2;
+    private Button Send_donation;
+
     private SharedPreferences prefs;
     private UserLocation userLocation;
 
@@ -44,6 +47,14 @@ public class DonatorLoginActivity extends AppCompatActivity {
         updateLocation2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 updateLocation();
+            }
+        });
+
+        Send_donation = (Button) findViewById(R.id.Send_donation_btn);
+        Send_donation.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent open = new Intent(DonatorLoginActivity.this, SendDonationActivity.class);
+                startActivity(open);
             }
         });
     }
@@ -67,6 +78,7 @@ public class DonatorLoginActivity extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
+
 
     private void updateLocation() {
         // Creating a string request
