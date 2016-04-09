@@ -183,7 +183,7 @@ public class LoginActivity extends AppCompatActivity {
                             //Starting profile activity
                             Intent intent = new Intent(LoginActivity.this, AdminActivity.class);
 
-                         //   Intent intent = new Intent(LoginActivity.this, EmployeeActivity.class);
+                            //   Intent intent = new Intent(LoginActivity.this, EmployeeActivity.class);
                             startActivity(intent);
 
                         }
