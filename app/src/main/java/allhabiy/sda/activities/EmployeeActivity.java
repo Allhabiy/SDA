@@ -1,6 +1,7 @@
 package allhabiy.sda.activities;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -30,6 +31,7 @@ public class EmployeeActivity extends AppCompatActivity {
     private EditText editTextPhone;
     private EditText editTextMSG;
     private Button btnSend;
+    private Button btnCollect;
 
     private ProgressDialog pDialog;
 
@@ -41,10 +43,18 @@ public class EmployeeActivity extends AppCompatActivity {
         editTextPhone = (EditText) findViewById(R.id.editTextPhoneE);
         editTextMSG = (EditText) findViewById(R.id.editTextMSGE);
         btnSend = (Button) findViewById(R.id.btnSend);
+        btnCollect = (Button) findViewById(R.id.btnCollect);
 
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
 
+
+        btnCollect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(EmployeeActivity.this, CollectDonationsActivity.class));
+            }
+        });
 
         btnSend.setOnClickListener(new View.OnClickListener() {
 

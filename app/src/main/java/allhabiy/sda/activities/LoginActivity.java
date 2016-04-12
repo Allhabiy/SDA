@@ -181,6 +181,31 @@ public class LoginActivity extends AppCompatActivity {
                             editor.commit();
 
                             //Starting profile activity
+                            Intent intent = new Intent(LoginActivity.this, EmployeeActivity.class);
+
+                            //   Intent intent = new Intent(LoginActivity.this, EmployeeActivity.class);
+                            startActivity(intent);
+
+                        }
+                        //If we are getting Admin from server
+                        //in the server there is echo "Admin"; that mean the user in a employee
+                        else if (response.equalsIgnoreCase(Config.LOGIN_Admin)) {
+
+                            hideDialog();
+                            //Creating a shared preference
+                            SharedPreferences sharedPreferences = LoginActivity.this.getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
+
+                            //Creating editor to store values to shared preferences
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                            //Adding values to editor
+                            editor.putBoolean(Config.LOGGEDIN_SHARED_PREF, true);
+                            editor.putString(Config.EMAIL_SHARED_PREF, nationlid);
+
+                            //Saving values to editor
+                            editor.commit();
+
+                            //Starting profile activity
                             Intent intent = new Intent(LoginActivity.this, AdminActivity.class);
 
                             //   Intent intent = new Intent(LoginActivity.this, EmployeeActivity.class);

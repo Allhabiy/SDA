@@ -45,7 +45,8 @@
         <activity android:name=".activities.BoxActivity" />
         <activity android:name=".activities.BoxDetailsActivity" />
         <activity android:name=".activities.SendDonationActivity" />
-
+        <activity android:name=".activities.CollectDonationsActivity" />
+        <activity android:name=".activities.CollectDonationsDetailsActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

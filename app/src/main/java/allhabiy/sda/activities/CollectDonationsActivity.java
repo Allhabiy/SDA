@@ -23,32 +23,33 @@ import java.util.List;
 
 import allhabiy.sda.R;
 import allhabiy.sda.adapters.BoxAdapter;
+import allhabiy.sda.adapters.DonationCollectionAdapter;
 import allhabiy.sda.listeners.RecyclerItemClickListener;
 import allhabiy.sda.models.Box;
+import allhabiy.sda.models.DonationCollection;
 import allhabiy.sda.utils.Config;
 
 
-
-public class BoxActivity extends AppCompatActivity {
+public class CollectDonationsActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter adapter;
 
-    private List<Box> boxes;
+    private List<DonationCollection> collections;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_box);
 
-        boxes = new ArrayList<Box>();
+        collections = new ArrayList<DonationCollection>();
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
-                Config.GET_ALL_BOX_URL,
+                Config.GET_ALL_COLLECTION_URL,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -56,15 +57,17 @@ public class BoxActivity extends AppCompatActivity {
                             for (int i = 0; i < response.length(); i++) {
                                 JSONObject jsonObject = response.getJSONObject(i);
                                 String name = jsonObject.getString("name");
-                                String status = jsonObject.getString("status");
+                                String date = jsonObject.getString("date");
+                                String time = jsonObject.getString("time");
+                                String type = jsonObject.getString("type");
                                 String latitude = jsonObject.getString("latitude");
                                 String longitude = jsonObject.getString("longitude");
 
-                                Box box = new Box(name, status, latitude, longitude);
-                                boxes.add(box);
+                                DonationCollection donationCollection = new DonationCollection(name, date, time, type, latitude, longitude);
+                                collections.add(donationCollection);
                             }
 
-                            adapter = new BoxAdapter(BoxActivity.this, boxes);
+                            adapter = new DonationCollectionAdapter(CollectDonationsActivity.this, collections);
                             recyclerView.setAdapter(adapter);
 
                         } catch (JSONException e) {
@@ -80,7 +83,7 @@ public class BoxActivity extends AppCompatActivity {
                 });
 
         //Adding the string request to the queue
-        RequestQueue requestQueue = Volley.newRequestQueue(BoxActivity.this);
+        RequestQueue requestQueue = Volley.newRequestQueue(CollectDonationsActivity.this);
         requestQueue.add(jsonArrayRequest);
 
         layoutManager = new LinearLayoutManager(this);
@@ -89,10 +92,10 @@ public class BoxActivity extends AppCompatActivity {
                 new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        Box box = boxes.get(position);
-                        Intent intent = new Intent(BoxActivity.this, BoxDetailsActivity.class);
-                        intent.putExtra("Box", box);
-                        BoxActivity.this.startActivity(intent);
+                        DonationCollection donationCollection = collections.get(position);
+                        Intent intent = new Intent(CollectDonationsActivity.this, CollectDonationsDetailsActivity.class);
+                        intent.putExtra("Donation", donationCollection);
+                        CollectDonationsActivity.this.startActivity(intent);
                     }
                 })
         );
