@@ -1,6 +1,8 @@
 package allhabiy.sda.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -22,10 +24,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import allhabiy.sda.R;
-import allhabiy.sda.adapters.BoxAdapter;
 import allhabiy.sda.adapters.DonationCollectionAdapter;
 import allhabiy.sda.listeners.RecyclerItemClickListener;
-import allhabiy.sda.models.Box;
 import allhabiy.sda.models.DonationCollection;
 import allhabiy.sda.utils.Config;
 
@@ -38,10 +38,16 @@ public class CollectDonationsActivity extends AppCompatActivity {
 
     private List<DonationCollection> collections;
 
+    private SharedPreferences prefs3;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_box);
+
+        prefs3 = getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        String id = prefs3.getString(Config.EMAIL_SHARED_PREF, "");
 
         collections = new ArrayList<DonationCollection>();
 
@@ -49,7 +55,7 @@ public class CollectDonationsActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
-                Config.GET_ALL_COLLECTION_URL,
+                Config.GET_ALL_COLLECTION_URL + "?admin_id=" + id,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -80,7 +86,10 @@ public class CollectDonationsActivity extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         Log.e("VolleyError", error.toString());
                     }
-                });
+                }
+
+
+        ) ;
 
         //Adding the string request to the queue
         RequestQueue requestQueue = Volley.newRequestQueue(CollectDonationsActivity.this);
