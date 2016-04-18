@@ -95,22 +95,13 @@
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/button_drive"
-        android:layout_width="wrap_content"
+        android:layout_width="142dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:background="@color/colorPrimary"
         android:padding="12dp"
-        android:text="Drive to this"
-        android:textColor="@color/colorAccent" />
-
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/button_location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@color/colorPrimary"
-        android:padding="12dp"
-        android:text="Take Location"
+        android:text="Drive"
+        android:textAlignment="center"
         android:textColor="@color/colorAccent" />
 
 </LinearLayout>

@@ -15,10 +15,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="User 1 page" />
+
 
         <Button
             android:id="@+id/user1Location"
@@ -28,6 +25,16 @@
             android:layout_marginTop="24dp"
             android:background="@color/colorPrimary"
             android:text="Update my location" />
+
+
+        <Button
+            android:id="@+id/Request_donation_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="24dp"
+            android:background="@color/colorPrimary"
+            android:text="Request a Donation" />
 
     </LinearLayout>
 

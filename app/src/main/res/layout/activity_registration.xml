@@ -129,7 +129,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Number of family member"
-                        android:inputType="text" />
+                        android:inputType="number" />
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
@@ -143,154 +143,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Monthly Income"
-                        android:inputType="text" />
+                        android:inputType="number" />
                 </android.support.design.widget.TextInputLayout>
 
-
-                <LinearLayout
-                    android:id="@+id/form1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="35dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="First choose" />
-
-                    <RadioGroup
-                        android:id="@+id/radioG1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <RadioButton
-                            android:id="@+id/radio1_1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:onClick="onRadioButtonClicked"
-                            android:text="Money" />
-
-
-                        <RadioButton
-                            android:id="@+id/radio1_2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:onClick="onRadioButtonClicked"
-                            android:text="Clothes" />
-
-
-                        <RadioButton
-                            android:id="@+id/radio1_3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:onClick="onRadioButtonClicked"
-                            android:text="Food" />
-
-
-                    </RadioGroup>
-
-                    <TextView
-                        android:id="@+id/txt1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/form2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="15dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Second choose" />
-
-                    <RadioGroup
-                        android:id="@+id/radioG2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <RadioButton
-                            android:id="@+id/radio2_1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:onClick="onRadioButtonClicked"
-                            android:text="Money" />
-                        />
-
-                        <RadioButton
-                            android:id="@+id/radio2_2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:onClick="onRadioButtonClicked"
-                            android:text="Clothes" />
-                        />
-
-                        <RadioButton
-                            android:id="@+id/radio2_3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:onClick="onRadioButtonClicked"
-                            android:text="Food" />
-                        />
-
-                    </RadioGroup>
-
-                    <TextView
-                        android:id="@+id/txt2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/form3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="extra choose" />
-
-                    <RadioGroup
-                        android:id="@+id/radioG3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <RadioButton
-                            android:id="@+id/radio3_1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:onClick="onRadioButtonClicked"
-                            android:text="Money" />
-
-                        <RadioButton
-                            android:id="@+id/radio3_2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:onClick="onRadioButtonClicked"
-                            android:text="Clothes" />
-
-                        <RadioButton
-                            android:id="@+id/radio3_3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:onClick="onRadioButtonClicked"
-                            android:text="Food" />
-                    </RadioGroup>
-
-
-                    <TextView
-                        android:id="@+id/txt3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
 
             </LinearLayout>
 

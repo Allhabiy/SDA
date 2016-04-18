@@ -10,7 +10,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import allhabiy.sda.R;
 import allhabiy.sda.utils.Config;
@@ -19,6 +22,8 @@ public class ProfileActivity extends AppCompatActivity {
 
     //Textview to show currently logged in user
     private TextView textView;
+//    private Button BtnBack;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +32,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         //Initializing textview
         textView = (TextView) findViewById(R.id.textView);
+//        BtnBack = (Button) findViewById(R.id.btn_Back);
 
         //Fetching email from shared preferences
         SharedPreferences sharedPreferences = getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
@@ -34,7 +40,28 @@ public class ProfileActivity extends AppCompatActivity {
 
         //Showing the current logged in email to textview
         textView.setText("Current User: " + nationlid);
+//
+//        BtnBack.setOnClickListener(new View.OnClickListener() {
+//
+//            public void onClick(View v) {
+//
+//               Back();
+//
+//
+//            }
+//        });
     }
+//    public void Back() {
+//        switch (BtnBack.getId()) {
+//            //First RadioGroup
+//            case R.id.radio1_1:
+//
+//                break;
+//            case R.id.radio1_2:
+//
+//        }
+//    }
+
 
     public void logout2() {
         //Getting out sharedpreferences
