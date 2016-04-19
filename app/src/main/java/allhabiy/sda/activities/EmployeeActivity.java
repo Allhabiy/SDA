@@ -34,6 +34,8 @@ public class EmployeeActivity extends AppCompatActivity {
     private EditText editTextMSG;
     private Button btnSend;
     private Button btnCollect;
+    private Button btnDistribute;
+
 
     private ProgressDialog pDialog;
     private ProfileActivity profileActivity;
@@ -47,6 +49,8 @@ public class EmployeeActivity extends AppCompatActivity {
         editTextMSG = (EditText) findViewById(R.id.editTextMSGE);
         btnSend = (Button) findViewById(R.id.btnSend);
         btnCollect = (Button) findViewById(R.id.btnCollect);
+        btnDistribute = (Button) findViewById(R.id.btnDistribute);
+
 
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
@@ -56,6 +60,13 @@ public class EmployeeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(EmployeeActivity.this, CollectDonationsActivity.class));
+            }
+        });
+
+        btnDistribute.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(EmployeeActivity.this, DistributeDonationsActivity.class));
             }
         });
 

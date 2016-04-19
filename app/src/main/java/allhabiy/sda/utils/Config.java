@@ -10,7 +10,7 @@ public interface Config {
     public static final String GET_ALL_USER_LOCATIONS_URL = "http://m7sn.com/sda/app/get_all_needy_locations.php";
     public static final String GET_ALL_BOX_URL = "http://m7sn.com/sda/app/get_all_box.php";
     public static final String GET_ALL_COLLECTION_URL = "http://m7sn.com/sda/app/get_all_Collection.php";
-
+    public static final String GET_ALL_DISTRUBTE_URL = "http://m7sn.com/sda/app/get_all_Distribute.php";
     public static final String UPDATE_BOX_LOCATION_URL = "http://m7sn.com/sda/app/update_box_location.php";
 
 

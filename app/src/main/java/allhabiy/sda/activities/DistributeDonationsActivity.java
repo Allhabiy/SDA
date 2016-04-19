@@ -24,19 +24,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import allhabiy.sda.R;
-import allhabiy.sda.adapters.DonationCollectionAdapter;
+import allhabiy.sda.adapters.DonationDistributeAdapter;
 import allhabiy.sda.listeners.RecyclerItemClickListener;
-import allhabiy.sda.models.DonationCollection;
+import allhabiy.sda.models.DonationDistribute;
 import allhabiy.sda.utils.Config;
 
 
-public class CollectDonationsActivity extends AppCompatActivity {
+public class DistributeDonationsActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter adapter;
 
-    private List<DonationCollection> collections;
+    private List<DonationDistribute> distributes;
 
     private SharedPreferences prefs3;
 
@@ -44,18 +44,18 @@ public class CollectDonationsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_collect_donations);
+        setContentView(R.layout.activity_distribute_donations);
 
         prefs3 = getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
         String id = prefs3.getString(Config.EMAIL_SHARED_PREF, "");
 
-        collections = new ArrayList<DonationCollection>();
+        distributes = new ArrayList<DonationDistribute>();
 
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view2);
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view3);
         recyclerView.setHasFixedSize(true);
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
-                Config.GET_ALL_COLLECTION_URL + "?admin_id=" + id,
+                Config.GET_ALL_DISTRUBTE_URL + "?admin_id=" + id,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -63,17 +63,17 @@ public class CollectDonationsActivity extends AppCompatActivity {
                             for (int i = 0; i < response.length(); i++) {
                                 JSONObject jsonObject = response.getJSONObject(i);
                                 String name = jsonObject.getString("name");
-                                String date = jsonObject.getString("date");
-                                String time = jsonObject.getString("time");
-                                String type = jsonObject.getString("type");
+                                String priority1 = jsonObject.getString("priority1");
+                                String priority2 = jsonObject.getString("priority2");
+                                String priority3 = jsonObject.getString("priority3");
                                 String latitude = jsonObject.getString("latitude");
                                 String longitude = jsonObject.getString("longitude");
 
-                                DonationCollection donationCollection = new DonationCollection(name, date, time, type, latitude, longitude);
-                                collections.add(donationCollection);
+                                DonationDistribute donationDistribute = new DonationDistribute(name, priority1, priority2, priority3, latitude, longitude);
+                                distributes.add(donationDistribute);
                             }
 
-                            adapter = new DonationCollectionAdapter(CollectDonationsActivity.this, collections);
+                            adapter = new DonationDistributeAdapter(DistributeDonationsActivity.this, distributes);
                             recyclerView.setAdapter(adapter);
 
                         } catch (JSONException e) {
@@ -92,7 +92,7 @@ public class CollectDonationsActivity extends AppCompatActivity {
         ) ;
 
         //Adding the string request to the queue
-        RequestQueue requestQueue = Volley.newRequestQueue(CollectDonationsActivity.this);
+        RequestQueue requestQueue = Volley.newRequestQueue(DistributeDonationsActivity.this);
         requestQueue.add(jsonArrayRequest);
 
         layoutManager = new LinearLayoutManager(this);
@@ -101,10 +101,10 @@ public class CollectDonationsActivity extends AppCompatActivity {
                 new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        DonationCollection donationCollection = collections.get(position);
-                        Intent intent = new Intent(CollectDonationsActivity.this, CollectDonationsDetailsActivity.class);
-                        intent.putExtra("Donation", donationCollection);
-                        CollectDonationsActivity.this.startActivity(intent);
+                        DonationDistribute donationDistribute = distributes.get(position);
+                        Intent intent = new Intent(DistributeDonationsActivity.this, DistributeDonationsDetailsActivity.class);
+                        intent.putExtra("Distribute", donationDistribute);
+                        DistributeDonationsActivity.this.startActivity(intent);
                     }
                 })
         );
