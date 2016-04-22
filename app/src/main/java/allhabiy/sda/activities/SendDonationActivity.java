@@ -124,10 +124,21 @@ public class SendDonationActivity extends Activity implements DatePickerDialog.O
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnDatePicker:
-                DatePickerDialog.newInstance(this, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show(getFragmentManager(), "datePicker");
+                Calendar maxDate = Calendar.getInstance();
+                Calendar minDate = Calendar.getInstance();
+                DatePickerDialog datePickerDialog = DatePickerDialog.newInstance(this, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+                minDate.add(Calendar.DATE, 1);
+                datePickerDialog.setMinDate(minDate);
+                maxDate.add(Calendar.DATE, 10);
+                datePickerDialog.setMaxDate(maxDate);
+                datePickerDialog.show(getFragmentManager(), "datePicker");
                 break;
             case R.id.btnTimePicker:
-                TimePickerDialog.newInstance(this, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true).show(getFragmentManager(), "timePicker");
+                TimePickerDialog timePickerDialog = new TimePickerDialog();
+                timePickerDialog.newInstance(this, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true);
+                timePickerDialog.setMaxTime(14, 0);
+                timePickerDialog.setMinTime(8, 60);
+                timePickerDialog.show(getFragmentManager(), "timePicker");
                 break;
         }
     }
@@ -155,56 +166,47 @@ public class SendDonationActivity extends Activity implements DatePickerDialog.O
     }
 
     private void Send_Doantion() {
-        if (lblTime.getText().charAt(1) == '8' || lblTime.getText().charAt(1) == '9' || lblTime.getText().charAt(1) == '0' ||
-                lblTime.getText().charAt(1) == '1' || lblTime.getText().charAt(1) == '2' || lblTime.getText().charAt(1) == '3') {
 
+        final String type = txt_select.getText().toString().trim();
+        final String date = lblDate.getText().toString().trim();
+        final String time = lblTime.getText().toString().trim();
 
-            final String type = txt_select.getText().toString().trim();
-            final String date = lblDate.getText().toString().trim();
-            final String time = lblTime.getText().toString().trim();
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, SEND_DOATION_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Toast.makeText(SendDonationActivity.this, response, Toast.LENGTH_LONG).show();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(SendDonationActivity.this, error.toString(), Toast.LENGTH_LONG).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
 
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, SEND_DOATION_URL,
-                    new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                            Toast.makeText(SendDonationActivity.this, response, Toast.LENGTH_LONG).show();
-                        }
-                    },
-                    new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            Toast.makeText(SendDonationActivity.this, error.toString(), Toast.LENGTH_LONG).show();
-                        }
-                    }) {
-                @Override
-                protected Map<String, String> getParams() {
-                    Map<String, String> params = new HashMap<String, String>();
+                double latitude = userLocation.getLastLocation().getLatitude();
+                double longitude = userLocation.getLastLocation().getLongitude();
 
-                    double latitude = userLocation.getLastLocation().getLatitude();
-                    double longitude = userLocation.getLastLocation().getLongitude();
+                params.put("latitude", String.valueOf(latitude));
+                params.put("longitude", String.valueOf(longitude));
 
-                    params.put("latitude", String.valueOf(latitude));
-                    params.put("longitude", String.valueOf(longitude));
+                String id = prefs2.getString(Config.EMAIL_SHARED_PREF, "");
 
-                    String id = prefs2.getString(Config.EMAIL_SHARED_PREF, "");
+                params.put(Config.KEY_NATIONAL_ID, id);
+                params.put(KEY_TYPE, type);
+                params.put(KEY_DATE, date);
+                params.put(KEY_TIME, time);
+                return params;
+            }
 
-                    params.put(Config.KEY_NATIONAL_ID, id);
-                    params.put(KEY_TYPE, type);
-                    params.put(KEY_DATE, date);
-                    params.put(KEY_TIME, time);
-                    return params;
-                }
+        };
 
-            };
-
-            RequestQueue requestQueue = Volley.newRequestQueue(this);
-            requestQueue.add(stringRequest);
-
-
-        } else {
-            Toast.makeText(getApplicationContext(), "Please choose from 8:00am to 1:00pm", Toast.LENGTH_SHORT).show();
-
-        }
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
 
 
     }
