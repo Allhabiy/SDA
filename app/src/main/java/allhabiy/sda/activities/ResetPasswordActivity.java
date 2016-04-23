@@ -1,5 +1,6 @@
 package allhabiy.sda.activities;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
@@ -32,6 +33,8 @@ public class ResetPasswordActivity extends AppCompatActivity {
     private AppCompatButton btnChangePassword;
     private View formChangePassword;
 
+    private ProgressDialog pDialog;
+
 
     private static final String ForgetPassword_URL = "http://m7sn.com/sda/app/sms/GetPassword2.php";
 
@@ -61,7 +64,14 @@ public class ResetPasswordActivity extends AppCompatActivity {
 
             public void onClick(View v) {
                 //     formChangePassword.setVisibility(View.VISIBLE);
-                GetPassword();
+                if (!editTextSendNationalID.getText().toString().equals("") && !editTextSendPhone.getText().toString().equals("")) {
+                    GetPassword();
+                } else {
+                    // Prompt user to enter credentials
+                    Toast.makeText(getApplicationContext(),
+                            "Please enter the information!", Toast.LENGTH_SHORT)
+                            .show();
+                }
 
             }
 
@@ -75,23 +85,33 @@ public class ResetPasswordActivity extends AppCompatActivity {
 
         });
 
+        // Progress dialog
+        pDialog = new ProgressDialog(this);
+        pDialog.setCancelable(false);
+
     }
 
     private void GetPassword() {
         final String NationalID = editTextSendNationalID.getText().toString().trim();
         final String Phone = editTextSendPhone.getText().toString().trim();
 
+        pDialog.setMessage("wait ...");
+        showDialog();
+
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, ForgetPassword_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        hideDialog();
                         Toast.makeText(ResetPasswordActivity.this, response, Toast.LENGTH_LONG).show();
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        hideDialog();
+
                         Toast.makeText(ResetPasswordActivity.this, error.toString(), Toast.LENGTH_LONG).show();
                     }
                 }) {
@@ -107,6 +127,18 @@ public class ResetPasswordActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
 
+    }
+
+    private void showDialog() {
+        if (!pDialog.isShowing())
+//            pDialog.show();
+            pDialog.show();
+
+    }
+
+    private void hideDialog() {
+        if (pDialog.isShowing())
+            pDialog.dismiss();
     }
 
     private void ChangePassword() {
