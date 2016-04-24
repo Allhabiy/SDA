@@ -13,6 +13,15 @@ public interface Config {
     public static final String GET_ALL_DISTRUBTE_URL = "http://m7sn.com/sda/app/get_all_Distribute.php";
     public static final String UPDATE_BOX_LOCATION_URL = "http://m7sn.com/sda/app/update_box_location.php";
 
+    //URLs to register.php and confirm.php file
+    public static final String CREATE_OTP_URL = "http://m7sn.com/sda/app/CreateOTP.php";
+    public static final String CONFIRM_OTP_URL = "http://m7sn.com/sda/app/ConfirmOTP.php";
+
+    //Keys to send username, password, phone and otp
+    public static final String KEY_USERNAME = "userID";
+    public static final String KEY_NEW_PASSWORD = "Newpassword";
+    public static final String KEY_OTP = "otp";
+
 
     //Keys for email and password as defined in our $_POST['key'] in login.php
     public static final String KEY_NATIONAL_ID = "nationlid";

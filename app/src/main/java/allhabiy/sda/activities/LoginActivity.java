@@ -259,7 +259,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
     public void passwordRecovery(View v) {
-        Intent open = new Intent(LoginActivity.this, ResetPasswordActivity.class);
+        Intent open = new Intent(LoginActivity.this, ResetPasswordOTPActivity.class);
         startActivity(open);
     }
 

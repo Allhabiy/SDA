@@ -50,6 +50,7 @@
         <activity android:name=".activities.NeedyRequestDonationActivity" />
         <activity android:name=".activities.DistributeDonationsActivity" />
         <activity android:name=".activities.DistributeDonationsDetailsActivity" />
+        <activity android:name=".activities.ResetPasswordOTPActivity" />
 
 
 
