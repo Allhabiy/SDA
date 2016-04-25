@@ -211,6 +211,14 @@ public class LoginActivity extends AppCompatActivity {
                             //   Intent intent = new Intent(LoginActivity.this, EmployeeActivity.class);
                             startActivity(intent);
 
+                        } //If we are getting wait from server
+                        //in the server there is echo "wait"; that mean the user in a needy and he not approved yet!
+
+                        else if (response.equalsIgnoreCase(Config.LOGIN_Wait)) {
+
+                            hideDialog();
+                            Toast.makeText(LoginActivity.this, "waiting for charity organization approval", Toast.LENGTH_SHORT).show();
+
                         }
                         //else there is nothing in the database
                         else {

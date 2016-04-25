@@ -19,13 +19,14 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
+
 import allhabiy.sda.R;
 import allhabiy.sda.utils.Config;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class ResetPasswordOTPActivity extends AppCompatActivity implements View.OnClickListener {
+public class ResetPasswordOTPActivity extends AppCompatActivity {
 
     //Creating views
     private EditText editTextUsername;
@@ -57,7 +58,20 @@ public class ResetPasswordOTPActivity extends AppCompatActivity implements View.
         requestQueue = Volley.newRequestQueue(this);
 
         //Adding a listener to button
-        buttonRegister.setOnClickListener(this);
+        buttonRegister.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                // check if the user enter info. in this page
+                if (!editTextUsername.getText().toString().equals("")) {
+                    // login user
+                    register();
+                } else {
+                    // Prompt user to enter credentials
+                    Toast.makeText(getApplicationContext(),
+                            "Please enter the National ID!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
 
@@ -89,60 +103,69 @@ public class ResetPasswordOTPActivity extends AppCompatActivity implements View.
         buttonConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Hiding the alert dialog
-                alertDialog.dismiss();
 
-                //Displaying a progressbar
-                final ProgressDialog loading = ProgressDialog.show(ResetPasswordOTPActivity.this, "Authenticating", "Please wait while we check the entered code", false, false);
+                // check if the user enter info. in this page
+                if (!editTextConfirmOtp.getText().toString().equals("") && !editTextNewPassword.getText().toString().equals("")) {
 
-                //Getting the user entered otp from edittext
-                final String otp = editTextConfirmOtp.getText().toString().trim();
-                final String newP = editTextNewPassword.getText().toString().trim();
+                    //Hiding the alert dialog
+                    alertDialog.dismiss();
 
-                //Creating an string request
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.CONFIRM_OTP_URL,
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response2) {
-                                //if the server response is success
-                           //     if (response2.equalsIgnoreCase(Config.LOGIN_NEEDY)) {
+                    //Displaying a progressbar
+                    final ProgressDialog loading = ProgressDialog.show(ResetPasswordOTPActivity.this, "Authenticating", "Please wait while we check the entered code", false, false);
+
+                    //Getting the user entered otp from edittext
+                    final String otp = editTextConfirmOtp.getText().toString().trim();
+                    final String newP = editTextNewPassword.getText().toString().trim();
+
+                    //Creating an string request
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.CONFIRM_OTP_URL,
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response2) {
+                                    //if the server response is success
+                                    //     if (response2.equalsIgnoreCase(Config.LOGIN_NEEDY)) {
                                     //dismissing the progressbar
                                     loading.dismiss();
 
                                     //Starting a new activity
-                                finish();
+                                    finish();
 
-                             //   } else {    //  startActivity(new Intent(MainActivity.this, Success.class));
+                                    //   } else {    //  startActivity(new Intent(MainActivity.this, Success.class));
 
-                                //Displaying a toast if the otp entered is wrong
+                                    //Displaying a toast if the otp entered is wrong
                                     Toast.makeText(ResetPasswordOTPActivity.this, response2.toString(), Toast.LENGTH_LONG).show();
 
                                     //Asking user to enter otp again
 
 
-                               // }
-                            }
-                        },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                alertDialog.dismiss();
-                                Toast.makeText(ResetPasswordOTPActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
-                            }
-                        }) {
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        Map<String, String> params = new HashMap<String, String>();
-                        //Adding the parameters otp and username
-                        params.put(Config.KEY_OTP, otp);
-                        params.put(Config.KEY_NEW_PASSWORD, newP);
-                        params.put(Config.KEY_USERNAME, username);
-                        return params;
-                    }
-                };
+                                    // }
+                                }
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    alertDialog.dismiss();
+                                    Toast.makeText(ResetPasswordOTPActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
+                                }
+                            }) {
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            Map<String, String> params = new HashMap<String, String>();
+                            //Adding the parameters otp and username
+                            params.put(Config.KEY_OTP, otp);
+                            params.put(Config.KEY_NEW_PASSWORD, newP);
+                            params.put(Config.KEY_USERNAME, username);
+                            return params;
+                        }
+                    };
 
-                //Adding the request to the queue
-                requestQueue.add(stringRequest);
+                    //Adding the request to the queue
+                    requestQueue.add(stringRequest);
+                } else {
+                    // Prompt user to enter credentials
+                    Toast.makeText(getApplicationContext(),
+                            "Please enter the required information!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -200,14 +223,4 @@ public class ResetPasswordOTPActivity extends AppCompatActivity implements View.
     }
 
 
-
-
-
-
-
-    @Override
-    public void onClick(View v) {
-        //Calling register method on register button click
-        register();
-    }
 }

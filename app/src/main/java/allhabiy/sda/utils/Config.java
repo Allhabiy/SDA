@@ -48,6 +48,8 @@ public interface Config {
     public static final String LOGIN_EMP = "employee";
     //TEST@ if whether the person who login in is the doner
     public static final String LOGIN_Admin = "Admin";
+    //TEST@ if whether the person who login in is the needy and he not approved yet
+    public static final String LOGIN_Wait = "wait";
 
 
 }
