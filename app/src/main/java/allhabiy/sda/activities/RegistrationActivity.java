@@ -6,11 +6,14 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +43,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
     public static final String KEY_FAMILY_MEMBER = "fmailymember";
     public static final String KEY_INCOME = "income";
+    public static final String KEY_NEIGHBORHOOD = "neighborhood";
 
 //    public static final String KEY_PRIORITY1 = "priority1";
 //    public static final String KEY_PRIORITY2 = "priority2";
@@ -64,6 +68,12 @@ public class RegistrationActivity extends AppCompatActivity {
 
     private CheckBox checkBox;
     private ProgressDialog pDialog;
+
+    String[] list1_neighborhood = {"Seialehia", "Khalidiya", "Rashidiya", "Muhammadiyah", "Bandariah"};
+
+
+    TextView txt_selected_neighborhood;
+    Spinner mySpinner;
 
 //    RadioGroup radioGroup1;
 //    RadioButton radio1_1;
@@ -91,6 +101,7 @@ public class RegistrationActivity extends AppCompatActivity {
         editTextPhone = (EditText) findViewById(R.id.editTextPhone);
         editTextFamilyMember = (EditText) findViewById(R.id.editTextFamilyMember);
         editTextIcome = (EditText) findViewById(R.id.editTextIcome);
+        txt_selected_neighborhood = (TextView) findViewById(R.id.txt1_neighborhood);
 
         //Manage the Needy people layout form
         formNeedy = (View) findViewById(R.id.formNeedy);
@@ -206,6 +217,32 @@ public class RegistrationActivity extends AppCompatActivity {
 
             }
         });
+
+        txt_selected_neighborhood = (TextView) findViewById(R.id.txt1_neighborhood);
+
+
+        //Spinner_neighborhood
+        mySpinner = (Spinner) findViewById(R.id.spinner_neighborhood);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                R.layout.spinner_neighborhood, R.id.txt_list1, list1_neighborhood);
+        mySpinner.setAdapter(adapter);
+
+        mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedItemText = (String) parent.getItemAtPosition(position);
+                // show the selected item text
+                txt_selected_neighborhood.setText(selectedItemText);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+                // sometimes you need nothing here
+            }
+        });
+
     }
 
     private void registerUser() {
@@ -218,6 +255,8 @@ public class RegistrationActivity extends AppCompatActivity {
 
         final String fmailymember = editTextFamilyMember.getText().toString().trim();
         final String income = editTextIcome.getText().toString().trim();
+        final String neighborhood = txt_selected_neighborhood.getText().toString().trim();
+
 //        final String priority1 = txt1.getText().toString().trim();
 //        final String priority2 = txt2.getText().toString().trim();
 //        final String priority3 = txt3.getText().toString().trim();
@@ -251,6 +290,8 @@ public class RegistrationActivity extends AppCompatActivity {
                     params.put(KEY_PHONE, phone);
                     params.put(KEY_FAMILY_MEMBER, fmailymember);
                     params.put(KEY_INCOME, income);
+                    params.put(KEY_NEIGHBORHOOD, neighborhood);
+
 //                    params.put(KEY_PRIORITY1, priority1);
 //                    params.put(KEY_PRIORITY2, priority2);
 //                    params.put(KEY_PRIORITY3, priority3);
@@ -269,6 +310,7 @@ public class RegistrationActivity extends AppCompatActivity {
             editTextPhone.setText("");
             editTextFamilyMember.setText("");
             editTextIcome.setText("");
+            txt_selected_neighborhood.setText("");
 //            txt1.setText("");
 //            txt2.setText("");
 //            txt3.setText("");
@@ -302,6 +344,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     params.put(KEY_PASSWORD, password);
                     params.put(KEY_NATIONAL_ID, nationlid);
                     params.put(KEY_PHONE, phone);
+                    params.put(KEY_NEIGHBORHOOD, neighborhood);
 
                     return params;
                 }
@@ -316,6 +359,7 @@ public class RegistrationActivity extends AppCompatActivity {
             editTextPassword.setText("");
             editTextNationalID.setText("");
             editTextPhone.setText("");
+            txt_selected_neighborhood.setText("");
 
         }
     }
