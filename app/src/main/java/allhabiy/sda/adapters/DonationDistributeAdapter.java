@@ -33,7 +33,7 @@ public class DonationDistributeAdapter extends RecyclerView.Adapter<DonationDist
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         DonationDistribute distribute = distributes.get(position);
-        holder.textViewName.setText(distribute.getPriority1());
+        holder.textViewName.setText(distribute.getName());
 //        holder.textViewName.setOnClickListener(clickListener);
 //        holder.textViewName.setTag(holder);
     }

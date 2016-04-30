@@ -33,7 +33,7 @@ public class DonationCollectionAdapter extends RecyclerView.Adapter<DonationColl
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         DonationCollection donations = collections.get(position);
-        holder.textViewName.setText(donations.getType());
+        holder.textViewName.setText(donations.getName());
 //        holder.textViewName.setOnClickListener(clickListener);
 //        holder.textViewName.setTag(holder);
     }
