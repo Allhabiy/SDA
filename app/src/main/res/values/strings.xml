@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SDA</string>
+    <string name="app_name">Smart Charity</string>
     <string name="Success">Success</string>
     <string name="Loading">Loading..</string>
     <string name="checkbox_needy_msg">Are you needy people</string>
