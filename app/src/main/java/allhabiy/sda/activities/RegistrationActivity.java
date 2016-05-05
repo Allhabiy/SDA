@@ -45,9 +45,6 @@ public class RegistrationActivity extends AppCompatActivity {
     public static final String KEY_INCOME = "income";
     public static final String KEY_NEIGHBORHOOD = "neighborhood";
 
-//    public static final String KEY_PRIORITY1 = "priority1";
-//    public static final String KEY_PRIORITY2 = "priority2";
-//    public static final String KEY_PRIORITY3 = "priority3";
 
     //for later use in Location
     public static final String KEY_LOCATIONX = "locationx";
@@ -148,26 +145,6 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         });
 
-//        /*
-//           this part of the code to manage the priority
-//         */
-//        txt1 = (TextView) findViewById(R.id.txt1);
-//        radioGroup1 = (RadioGroup) findViewById(R.id.radioG1);
-//        radio1_1 = (RadioButton) findViewById(R.id.radio1_1);
-//        radio1_2 = (RadioButton) findViewById(R.id.radio1_2);
-//        radio1_3 = (RadioButton) findViewById(R.id.radio1_3);
-//
-//        radioGroup2 = (RadioGroup) findViewById(R.id.radioG2);
-//        radio2_1 = (RadioButton) findViewById(R.id.radio2_1);
-//        radio2_2 = (RadioButton) findViewById(R.id.radio2_2);
-//        radio2_3 = (RadioButton) findViewById(R.id.radio2_3);
-//        txt2 = (TextView) findViewById(R.id.txt2);
-//
-//        radioGroup3 = (RadioGroup) findViewById(R.id.radioG3);
-//        radio3_1 = (RadioButton) findViewById(R.id.radio3_1);
-//        radio3_2 = (RadioButton) findViewById(R.id.radio3_2);
-//        radio3_3 = (RadioButton) findViewById(R.id.radio3_3);
-//        txt3 = (TextView) findViewById(R.id.txt3);
 
         editTextUsername = (EditText) findViewById(R.id.editTextUsername);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
@@ -292,9 +269,6 @@ public class RegistrationActivity extends AppCompatActivity {
                     params.put(KEY_INCOME, income);
                     params.put(KEY_NEIGHBORHOOD, neighborhood);
 
-//                    params.put(KEY_PRIORITY1, priority1);
-//                    params.put(KEY_PRIORITY2, priority2);
-//                    params.put(KEY_PRIORITY3, priority3);
 
                     return params;
                 }
@@ -374,113 +348,6 @@ public class RegistrationActivity extends AppCompatActivity {
             pDialog.dismiss();
     }
 
-    /*
-   This part to mangage the priority radio button
-    /*
-    public void onRadioButtonClicked(View view) {
-        // Is the button now checked?
-        boolean checked = ((RadioButton) view).isChecked();
-
-        // Check which radio button was clicked
-        switch (view.getId()) {
-            //First RadioGroup
-            case R.id.radio1_1:
-                if (checked) {
-                    txt1.setText(radio1_1.getText());
-                    radio2_1.setVisibility(View.INVISIBLE);
-                    radio2_2.setVisibility(View.VISIBLE);
-                    radio2_3.setVisibility(View.VISIBLE);
-
-                    txt2.setText("");
-
-                }
-                break;
-            case R.id.radio1_2:
-                if (checked) {
-                    txt1.setText(radio1_2.getText());
-                    radio2_1.setVisibility(View.VISIBLE);
-                    radio2_2.setVisibility(View.INVISIBLE);
-                    radio2_3.setVisibility(View.VISIBLE);
-
-                    txt2.setText("");
-
-                }
-
-                break;
-            case R.id.radio1_3:
-                if (checked) {
-                    txt1.setText(radio1_3.getText());
-                    radio2_1.setVisibility(View.VISIBLE);
-                    radio2_2.setVisibility(View.VISIBLE);
-                    radio2_3.setVisibility(View.INVISIBLE);
-
-                    txt2.setText("");
-                }
-                break;
-
-            //Second RadioGroup
-            case R.id.radio2_1:
-                if (checked) {
-                    if (radio1_1.isChecked() || radio1_2.isChecked() || radio1_3.isChecked()) {
-                        txt2.setText(radio2_1.getText());
-                        radio2_1.setChecked(true);
-
-                    } else {
-                        Toast.makeText(RegistrationActivity.this, "check first choose before ", Toast.LENGTH_SHORT).show();
-                        radio2_1.setChecked(false);
-                        txt2.setText("");
-
-                    }
-
-                }
-                break;
-            case R.id.radio2_2:
-                if (checked)
-                    if (radio1_1.isChecked() || radio1_2.isChecked() || radio1_3.isChecked()) {
-                        txt2.setText(radio2_2.getText());
-                        radio2_2.setChecked(true);
-
-                    } else {
-                        Toast.makeText(RegistrationActivity.this, "check first choose before ", Toast.LENGTH_SHORT).show();
-                        radio2_2.setChecked(false);
-                        txt2.setText("");
-
-                    }
-                break;
-            case R.id.radio2_3:
-                if (checked)
-                    if (radio1_1.isChecked() || radio1_2.isChecked() || radio1_3.isChecked()) {
-                        txt2.setText(radio2_3.getText());
-                        radio2_3.setChecked(true);
-
-                    } else {
-                        Toast.makeText(RegistrationActivity.this, "check first choose before ", Toast.LENGTH_SHORT).show();
-                        radio2_3.setChecked(false);
-                        txt2.setText("");
-
-                    }
-                break;
-
-            //Third RadioGroup
-            case R.id.radio3_1:
-                if (checked)
-                    txt3.setText(radio3_1.getText());
-
-                break;
-            case R.id.radio3_2:
-                if (checked)
-                    txt3.setText(radio3_2.getText());
-
-                break;
-            case R.id.radio3_3:
-                if (checked)
-                    txt3.setText(radio3_3.getText());
-
-                break;
-
-        }
-    }
-    */
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
