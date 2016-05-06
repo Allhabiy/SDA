@@ -41,7 +41,6 @@
         <activity android:name=".activities.AboutSDAActivity" />
         <activity android:name=".activities.AboutDevelopersActivity" />
         <activity android:name=".activities.EmployeeActivity" />
-        <activity android:name=".activities.ResetPasswordActivity" />
         <activity android:name=".activities.AdminActivity" />
         <activity android:name=".activities.NeedyDetailsActivity" />
         <activity android:name=".activities.BoxActivity" />

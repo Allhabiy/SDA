@@ -285,6 +285,10 @@ public class RegistrationActivity extends AppCompatActivity {
             editTextFamilyMember.setText("");
             editTextIcome.setText("");
             txt_selected_neighborhood.setText("");
+
+            Intent open = new Intent(RegistrationActivity.this, LoginActivity.class);
+            startActivity(open);
+
 //            txt1.setText("");
 //            txt2.setText("");
 //            txt3.setText("");
@@ -334,7 +338,8 @@ public class RegistrationActivity extends AppCompatActivity {
             editTextNationalID.setText("");
             editTextPhone.setText("");
             txt_selected_neighborhood.setText("");
-
+            Intent open = new Intent(RegistrationActivity.this, LoginActivity.class);
+            startActivity(open);
         }
     }
 

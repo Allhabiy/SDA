@@ -175,7 +175,7 @@ public class ResetPasswordOTPActivity extends AppCompatActivity {
     private void register() {
 
         //Displaying a progress dialog
-        final ProgressDialog loading = ProgressDialog.show(this, "Registering", "Please wait...", false, false);
+        final ProgressDialog loading = ProgressDialog.show(this, "Checking", "Please wait...", false, false);
 
 
         //Getting user data

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:background="@color/colorBackground"
     android:layout_height="fill_parent"
+    android:background="@color/colorBackground"
     android:fitsSystemWindows="true">
 
     <LinearLayout
-        android:layout_gravity="center_vertical"
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical"
         android:paddingLeft="24dp"
         android:paddingRight="24dp">
 
@@ -17,27 +17,28 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/editTextUsername"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp">
+
+            <EditText
+                android:id="@+id/editTextUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:hint="User ID" />
+                android:hint="User ID"
+                android:inputType="number" />
         </android.support.design.widget.TextInputLayout>
-
 
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/buttonRegister"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:textColor="@color/colorAccent"
-            android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
+            android:layout_marginTop="24dp"
+            android:background="@color/colorPrimary"
             android:padding="12dp"
-            android:text="Send"/>
+            android:text="Send"
+            android:textColor="@color/colorAccent" />
 
     </LinearLayout>
 </ScrollView>
